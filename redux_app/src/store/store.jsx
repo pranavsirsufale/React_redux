@@ -1,10 +1,13 @@
 import { createStore } from 'redux'
 
-
 const initialState = {
     task : [ ],
 }
 
+// added task 
+/*
+
+*/
 const ADD_TASK = 'task/add';
 const DELETE_TASK  = 'task/delete'
 
@@ -37,8 +40,21 @@ export const store = createStore(taskReduder)
 console.log(store.getState());
 
 
-store.dispatch({ type : ADD_TASK, payload : 'add task ' })
-
+store.dispatch(addTask('buy tea and coffee'))
 console.log(store.getState());
 
 
+//? step 5 : create an action creator
+const addTask = (data) => {
+    return {
+        type : ADD_TASK, payload : data
+    }
+}
+
+
+const deleteTask = (id) => {
+    return {
+        type : DELETE_TASK,
+        payload : id
+    }
+}
