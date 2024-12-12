@@ -37,4 +37,8 @@ export const store = createStore(taskReduder)
 console.log(store.getState());
 
 
+store.dispatch({ type : ADD_TASK, payload : 'add task ' })
+
+console.log(store.getState());
+
 
