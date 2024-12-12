@@ -1,5 +1,8 @@
+import { createStore } from 'redux'
+
+
 const initialState = {
-    task : [],
+    task : [ ],
 }
 
 const ADD_TASK = 'task/add';
@@ -24,3 +27,14 @@ const taskReduder = ( state = initialState,action) => {
     }
 
 }
+
+
+//? Step 2 : Create the Redux Store using the reducer 
+export const store = createStore(taskReduder)
+
+
+
+console.log(store.getState());
+
+
+
