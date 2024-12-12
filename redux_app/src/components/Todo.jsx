@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useSelector , useDispatch} from "react-redux"
-import { addTask } from "../store/store"
+import { addTask ,deleteTask } from "../store/store"
 
 const Todo = () => {
     const [ task, setTask] = useState([''])
@@ -23,7 +23,7 @@ const Todo = () => {
 
 
     const handleRemove = (id) => {
-
+        dispatch(deleteTask(id))
     }
 
     return (
@@ -36,7 +36,7 @@ const Todo = () => {
             data.map((task,index)=> (
                 <li key={index} >
                     <p> {task} </p>
-                    
+
                 <p><button onClick={()=>handleRemove(index)} > Remove </button>  </p>
                 </li>
             ))

@@ -59,4 +59,4 @@ const deleteTask = (id) => {
     }
 }
 
-export { addTask,}
+export { addTask,deleteTask}
