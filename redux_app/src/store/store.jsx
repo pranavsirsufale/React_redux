@@ -40,8 +40,6 @@ export const store = createStore(taskReduder)
 console.log(store.getState());
 
 
-store.dispatch(addTask('buy tea and coffee'))
-console.log(store.getState());
 
 
 //? step 5 : create an action creator
@@ -51,6 +49,8 @@ const addTask = (data) => {
     }
 }
 
+store.dispatch(addTask('buy tea and coffee'))
+console.log(store.getState());
 
 const deleteTask = (id) => {
     return {
@@ -58,3 +58,5 @@ const deleteTask = (id) => {
         payload : id
     }
 }
+
+export { addTask,}
