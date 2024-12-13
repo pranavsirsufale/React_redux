@@ -9,6 +9,7 @@ const initialState = {
 
 */
 const ADD_TASK = 'task/add';
+const ADD_API_TASK =   'task/add/api'
 const DELETE_TASK  = 'task/delete'
 
 const taskReduder = ( state = initialState,action) => {
@@ -24,6 +25,11 @@ const taskReduder = ( state = initialState,action) => {
                 task : state.task.filter((currentTask,id)=>(
                     id !== action.payload
                 ))
+            }
+        case ADD_API_TASK:
+            return{
+                ...state,
+                task : [ ...state.task,action.payload]
             }
         default :
         return state
@@ -56,6 +62,21 @@ const deleteTask = (id) => {
     return {
         type : DELETE_TASK,
         payload : id
+    }
+}
+
+const addNewTask = () => {
+    return async (dispatch) => {
+        try {
+            const res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+            const task = await res.json()
+            console.log(task)
+            console.log(store.getState())
+            dispatch({type :ADD_API_TASK, payload : task })
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 

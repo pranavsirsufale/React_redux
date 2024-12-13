@@ -37,11 +37,13 @@ const Todo = () => {
                 <div className="row" >
                             <h1> Hii there ! , Pranav Sirsufale</h1>
                         <form onSubmit={(e)=>handleAddUser(e)} >
+
                             <input type="text"  id="input-box" 
                             placeholder="add a new task"
                             value={task}
                             onChange={(e)=>handleInput(e)}
                             />
+                            <button> Add an API Task</button>
                             <button> Add Task </button>
 
         {/* <input type="text" value={task} onChange={(e)=>handleInput(e)} />
