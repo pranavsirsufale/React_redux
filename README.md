@@ -96,8 +96,9 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 ## Author
 
-** Pranav Sirsufale **  
+**Pranav Sirsufale**  
 [GitHub Profile](https://github.com/pranavsirsufale) 
+
 [LinkedIn Profile](https://www.linkedin.com/in/pranav-sirsufale-488ba4269/)
 
 ---
