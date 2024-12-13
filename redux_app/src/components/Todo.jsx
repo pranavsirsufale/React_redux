@@ -29,7 +29,7 @@ const Todo = () => {
 
 
     const handleRemove = (id) => {
-        deleteTask(id)
+        dispatch(deleteTask(id))
     }
 
     return (

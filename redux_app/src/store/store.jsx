@@ -14,8 +14,8 @@ const initialState = {
 
 */
 const ADD_TASK = 'task/add';
-const ADD_API_TASK =   'task/add/api'
 const DELETE_TASK  = 'task/delete'
+const ADD_API_TASK =   'task/add/api'
 
 const taskReduder = ( state = initialState,action) => {
     switch(action.type ){
@@ -25,9 +25,12 @@ const taskReduder = ( state = initialState,action) => {
                 task : [...state.task,action.payload]
             }
         case DELETE_TASK:
+
+        console.log(action.payload);
+        
             return { 
                 ...state,
-                task : state.task.filter((currentTask,id)=>(
+                task : state.task.filter((_,id)=>(
                     id !== action.payload
                 ))
             }
@@ -76,9 +79,6 @@ const addNewTask = () => {
         try {
             const res = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=3')
             const task = await res.json()
-            console.log(task.map((item,index)=>(
-                item.title
-            )))
 
             dispatch({type :ADD_API_TASK, payload : task.map((item,inde)=>(
                 item.title
