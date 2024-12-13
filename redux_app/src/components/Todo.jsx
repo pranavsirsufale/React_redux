@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useSelector , useDispatch} from "react-redux"
-import { addTask ,deleteTask } from "../store/store"
+import { addTask ,deleteTask , addNewTask} from "../store/store"
 
 const Todo = () => {
     const [ task, setTask] = useState([''])
@@ -22,9 +22,14 @@ const Todo = () => {
         setTask('')
     }
 
+    const handleAddUserApi = (e) => {
+        e.preventDefault()
+        dispatch(addNewTask())
+    }
+
 
     const handleRemove = (id) => {
-        dispatch(deleteTask(id))
+        deleteTask(id)
     }
 
     return (
@@ -36,15 +41,17 @@ const Todo = () => {
                 </h1>
                 <div className="row" >
                             <h1> Hii there ! , Pranav Sirsufale</h1>
-                        <form onSubmit={(e)=>handleAddUser(e)} >
+                        <form onSubmit={(e)=>(e.preventDefault())} >
 
                             <input type="text"  id="input-box" 
                             placeholder="add a new task"
                             value={task}
                             onChange={(e)=>handleInput(e)}
                             />
-                            <button> Add an API Task</button>
-                            <button> Add Task </button>
+                            <button  onClick={(e)=>handleAddUser(e)} > Add Task </button>
+
+
+                            <button onClick={(e)=>handleAddUserApi(e)}> Add an API Task</button>
 
         {/* <input type="text" value={task} onChange={(e)=>handleInput(e)} />
         <button  onClick={handleAddUser} > Add task </button> */}

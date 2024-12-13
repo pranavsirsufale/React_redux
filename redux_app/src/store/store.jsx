@@ -1,7 +1,12 @@
-import { createStore } from 'redux'
+import { createStore,applyMiddleware } from 'redux'
+import { useDispatch } from 'react-redux';
+import { thunk } from 'redux-thunk'
+import { composeWithDevTools} from '@redux-devtools/extension'
+
+// const dispatch = useDispatch()
 
 const initialState = {
-    task : [ ],
+    task : [],
 }
 
 // added task 
@@ -29,7 +34,7 @@ const taskReduder = ( state = initialState,action) => {
         case ADD_API_TASK:
             return{
                 ...state,
-                task : [ ...state.task,action.payload]
+                task : [ ...state.task,...action.payload]
             }
         default :
         return state
@@ -39,7 +44,8 @@ const taskReduder = ( state = initialState,action) => {
 
 
 //? Step 2 : Create the Redux Store using the reducer 
-export const store = createStore(taskReduder)
+export const store = createStore(taskReduder,composeWithDevTools(applyMiddleware(thunk)))
+
 
 
 
@@ -68,11 +74,15 @@ const deleteTask = (id) => {
 const addNewTask = () => {
     return async (dispatch) => {
         try {
-            const res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+            const res = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=3')
             const task = await res.json()
-            console.log(task)
-            console.log(store.getState())
-            dispatch({type :ADD_API_TASK, payload : task })
+            console.log(task.map((item,index)=>(
+                item.title
+            )))
+
+            dispatch({type :ADD_API_TASK, payload : task.map((item,inde)=>(
+                item.title
+            ))})
 
         } catch (error) {
             console.log(error)
@@ -80,4 +90,4 @@ const addNewTask = () => {
     }
 }
 
-export { addTask,deleteTask}
+export { addTask,deleteTask,addNewTask}
