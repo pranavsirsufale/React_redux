@@ -50,11 +50,29 @@ button:focus-visible {
 
 ul{
   width: 50vw;
+ 
+
 }
 
 li{
-  justify-content: space-around;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  font-size: x-large;
 }
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input{
+  padding: 1rem;
+  margin-right: 2rem;
+  font-size: larger;
+}
+
+
 
 
 @media (prefers-color-scheme: light) {
