@@ -12,6 +12,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+html{
+  box-sizing: border-box;
+  max-width: 100vw;
+}
 
 a {
   font-weight: 500;
